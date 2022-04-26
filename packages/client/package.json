@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@babel/helper-builder-react-jsx": "^7.16.7",
     "apollo-boost": "^0.1.23",
     "graphql": "^14.0.2",
     "react": "^16.7.0",
