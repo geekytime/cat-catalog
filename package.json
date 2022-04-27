@@ -6,7 +6,9 @@
     "serve": "cd packages/server; cross-env PORT=${PORT:-8080} yarn serve"
   },
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
