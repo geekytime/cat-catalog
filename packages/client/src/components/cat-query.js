@@ -1,23 +1,6 @@
 import React, { useState } from 'react'
-import { gql, useMutation } from '@apollo/client'
-
-export const ADD_CAT = gql`
-  mutation AddCat($catName: String!) {
-    addCat(catName: $catName) {
-      _id
-      name
-      avatarUrl
-    }
-  }
-`
-
-export const DELETE_CATS = gql`
-  mutation DeleteCats($catName: String!) {
-    deleteCats(catName: $catName) {
-      name
-    }
-  }
-`
+import { useMutation } from '@apollo/client'
+import { ADD_CAT, CATS_QUERY, DELETE_CATS } from '../graph.js'
 
 export const CatQuery = () => {
   const [catName, setCatName] = useState('')

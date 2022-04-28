@@ -1,31 +1,5 @@
 import React, { Component } from 'react'
-import { gql, useQuery, useSubscription } from '@apollo/client'
-
-const CATS_QUERY = gql`
-  query GetAllCats {
-    cats {
-      _id
-      name
-      avatarUrl
-    }
-  }
-`
-
-const CAT_ADDED_SUB = gql`
-  subscription CatAdded {
-    catAdded {
-      _id
-      name
-      avatarUrl
-    }
-  }
-`
-
-const CATS_DELETED_SUB = gql`
-  subscription CatsDeleted {
-    catsDeleted
-  }
-`
+import { CATS_DELETED_SUB, CATS_QUERY, CAT_ADDED_SUB } from '../graph'
 
 export const CatListWithData = () => {
   const { data, loading, error, subscribeToMore } = useQuery(CATS_QUERY)
