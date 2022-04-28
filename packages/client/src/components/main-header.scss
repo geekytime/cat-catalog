@@ -1,0 +1,15 @@
+@use '../styles/colors.scss' as colors;
+
+.MainHeader {
+  h1,
+  h2 {
+    text-align: center;
+    color: colors.$white;
+  }
+
+  h1 {
+    padding-top: 16px;
+  }
+
+  padding-bottom: 24px;
+}

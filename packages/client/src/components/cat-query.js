@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
-import { ADD_CAT, CATS_QUERY, DELETE_CATS } from '../graph.js'
+import { ADD_CAT, DELETE_CATS } from '../graph.js'
+import './cat-query.scss'
 
 export const CatQuery = () => {
   const [catName, setCatName] = useState('')
 
-  const [addCat, { loading: loadingAdd, error: errorAdd }] = useMutation(
-    ADD_CAT
-  )
+  const [addCat, { error: errorAdd }] = useMutation(ADD_CAT)
 
-  const [
-    deleteCats,
-    { loading: loadingDelete, error: errorDelete }
-  ] = useMutation(DELETE_CATS)
+  const [deleteCats, { error: errorDelete }] = useMutation(DELETE_CATS)
 
   if (errorAdd || errorDelete) {
     return (
@@ -41,10 +37,19 @@ export const CatQuery = () => {
 
   return (
     <div className='CatQuery'>
-      <input type='text' onChange={handleCatNameChange} value={catName} />
-      <div>
-        <button onClick={handleNewCatClick}>New Cat</button>
-        <button onClick={handleForgetCatClick}>Forget Cat</button>
+      <input
+        type='text'
+        onChange={handleCatNameChange}
+        value={catName}
+        placeholder="Cat's Name"
+      />
+      <div className='buttons'>
+        <button className='new-cat' onClick={handleNewCatClick}>
+          New Cat
+        </button>
+        <button className='forget-cat' onClick={handleForgetCatClick}>
+          Forget Cat
+        </button>
       </div>
     </div>
   )

@@ -1,0 +1,41 @@
+@use '../styles/colors.scss' as colors;
+
+.CatQuery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input {
+    height: 32px;
+    width: 480px;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 4px 4px colors.$shadow;
+    text-align: center;
+  }
+
+  .buttons {
+    margin: 32px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      height: 32px;
+      width: 160px;
+      margin: 0px 24px;
+      border-radius: 16px;
+      border: none;
+      outline: none;
+      color: white;
+
+      &.new-cat {
+        background-color: colors.$submit;
+      }
+
+      &.forget-cat {
+        background-color: colors.$danger;
+      }
+    }
+  }
+}

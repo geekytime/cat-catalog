@@ -1,6 +1,7 @@
 import { MainHeader } from './components/main-header.js'
 import React from 'react'
-import './App.css'
+import './App.scss'
+import './reset.scss'
 import { createCache } from './cache.js'
 
 import { ApolloClient, ApolloProvider, HttpLink, split } from '@apollo/client'
@@ -43,9 +44,13 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <div className='App'>
-        <MainHeader />
-        <CatQuery />
-        <CatListWithData />
+        <div className='top'>
+          <MainHeader />
+          <CatQuery />
+        </div>
+        <div className='bottom'>
+          <CatListWithData />
+        </div>
       </div>
     </ApolloProvider>
   )
