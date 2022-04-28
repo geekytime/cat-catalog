@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { useQuery } from '@apollo/client'
+import titleize from 'titleize'
 import { CATS_DELETED_SUB, CATS_QUERY, CAT_ADDED_SUB } from '../graph'
 
 export const CatListWithData = () => {
@@ -34,7 +36,7 @@ export const CatListWithData = () => {
 
         const removedName = subscriptionData.data.catsDeleted
         const filteredCats = prev.cats.filter(cat => {
-          return cat.name != removedName
+          return cat.catName != removedName
         })
         return { cats: filteredCats }
       }
@@ -61,10 +63,12 @@ export class CatList extends Component {
 }
 
 export const CatItem = ({ cat }) => {
+  const titleizedName = titleize(cat.catName)
+
   return (
     <div className='CatItem'>
       <img src={cat.avatarUrl} width='100' />
-      <div>{cat.name}</div>
+      <div>{titleizedName}</div>
     </div>
   )
 }

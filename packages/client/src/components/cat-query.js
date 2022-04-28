@@ -18,13 +18,15 @@ export const CatQuery = () => {
     return (
       <div>
         <div>An error occurred:</div>
-        <pre>JSON.stringify(errorAdd || errorDelete)</pre>
+        <pre>{JSON.stringify(errorAdd || errorDelete)}</pre>
       </div>
     )
   }
 
   const handleNewCatClick = () => {
-    addCat({ variables: { catName } })
+    const trimmedName = catName.trim()
+    addCat({ variables: { catName: trimmedName } })
+    setCatName('')
   }
 
   const handleCatNameChange = event => {
@@ -32,12 +34,14 @@ export const CatQuery = () => {
   }
 
   const handleForgetCatClick = () => {
-    deleteCats({ variables: { catName } })
+    const trimmedName = catName.trim()
+    deleteCats({ variables: { catName: trimmedName } })
+    setCatName('')
   }
 
   return (
     <div className='CatQuery'>
-      <input type='text' onChange={handleCatNameChange} />
+      <input type='text' onChange={handleCatNameChange} value={catName} />
       <div>
         <button onClick={handleNewCatClick}>New Cat</button>
         <button onClick={handleForgetCatClick}>Forget Cat</button>

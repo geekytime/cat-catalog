@@ -11,10 +11,12 @@ export class CatsDS extends DataSource {
   }
 
   addCat ({ catName }) {
-    return this.catsModel.addCat({ catName })
+    const nameLower = catName.toLowerCase()
+    return this.catsModel.addCat({ catName: nameLower })
   }
 
   deleteCats ({ catName }) {
-    return this.catsModel.deleteCats({ catName })
+    const nameLower = catName.toLowerCase()
+    return this.catsModel.deleteCats({ catName: nameLower })
   }
 }

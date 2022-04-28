@@ -15,7 +15,7 @@ import { CatsModel } from './models/cats-model.js'
 const typeDefs = gql`
   type Cat {
     _id: String!
-    name: String!
+    catName: String!
     avatarUrl: String!
   }
 

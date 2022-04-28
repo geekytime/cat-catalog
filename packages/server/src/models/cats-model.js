@@ -12,7 +12,7 @@ export class CatsModel {
   }
 
   async addCat ({ catName }) {
-    const query = { name: catName }
+    const query = { catName }
     const existingCat = await this.collection.findOne(query)
     if (existingCat) {
       return this.insertDupeCat({ existingCat })
@@ -22,15 +22,15 @@ export class CatsModel {
   }
 
   async insertDupeCat ({ existingCat }) {
-    const { name, avatarUrl } = existingCat
-    const doc = { name, avatarUrl }
+    const { catName, avatarUrl } = existingCat
+    const doc = { catName, avatarUrl }
     return this.insertOne({ doc })
   }
 
   async insertNewCat ({ catName }) {
     const avatarUrl = await getRandomAvatarUrl()
     const doc = {
-      name: catName,
+      catName,
       avatarUrl
     }
     return this.insertOne({ doc })
@@ -45,7 +45,7 @@ export class CatsModel {
   }
 
   async deleteCats ({ catName }) {
-    const filter = { name: catName }
+    const filter = { catName }
     await this.collection.deleteMany(filter)
     return catName
   }
